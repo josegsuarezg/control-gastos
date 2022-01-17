@@ -1,4 +1,6 @@
 import { formatearFecha } from "../helpers";
+
+//Importación de la libreria para hacer Swipe en los gastos
 import {
   LeadingActions,
   SwipeableList,
@@ -28,25 +30,26 @@ const diccionarioIconos = {
 }
 
 
-const Gasto = ({gasto}) => {
-  const {nombre, cantidad, categoria, id, fecha} = gasto
-  
+const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
+  const { nombre, cantidad, categoria, id, fecha } = gasto;
+
+  //Funciones para el Swipe de Editar/Eliminar Gasto
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log('Editar...')}>
-        Editar
-      </SwipeAction>
+      <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar</SwipeAction>
     </LeadingActions>
-  )
-
+  );
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log('Eliminar...')}>
+      <SwipeAction 
+        onClick={() => eliminarGasto(id)}
+        destructive={true}
+      >
         Eliminar
       </SwipeAction>
     </TrailingActions>
   );
-  
+
   return (
     <SwipeableList>
       <SwipeableListItem
@@ -69,6 +72,6 @@ const Gasto = ({gasto}) => {
       </SwipeableListItem>
     </SwipeableList>
   );
-}
+};
 
 export default Gasto
