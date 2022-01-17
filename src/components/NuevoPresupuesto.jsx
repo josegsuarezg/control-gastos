@@ -4,7 +4,6 @@ import Mensaje from './Mensaje';
 const NuevoPresupuesto = ({
   presupuesto,
   setPresupuesto,
-  isValidPresupuesto,
   setIsValidPresupuesto
 }) => {
   const [mensaje, setMensaje] = useState('');
@@ -31,7 +30,7 @@ const NuevoPresupuesto = ({
             className="nuevo-presupuesto"
             placeholder="Añade tu Presupuesto"
             value={presupuesto}
-            onChange={(e) => setPresupuesto(Number(e.target.value))}
+            onChange={e => setPresupuesto(Number(e.target.value))}
           />
         </div>
 
